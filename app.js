@@ -5,9 +5,15 @@ const bodyParser = require('body-parser')
 const fileUpload = require('express-fileupload')
 const paymentRoute = require('./routes/PaymentRoute')
 const path = require('path')
+const cors = require('cors')
 dotenv.config({ path: './config.env' })
 require('./database/conn')
 const app = express();
+app.use(cors({
+    origin: [process.env.FRONTEND_URL],
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    credentials: true
+}))
 app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }))
 app.use(fileUpload())
 app.use(express.json({ limit: '50mb' }));
