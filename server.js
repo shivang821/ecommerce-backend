@@ -5,9 +5,9 @@ const cloudinary = require('cloudinary')
 const PORT = process.env.PORT || 4000
     // handling uncaught Exception
 
-process.on("uncaughtException", err => {
-    process.exit(1);
-})
+// process.on("uncaughtException", err => {
+//     process.exit(1);
+// })
 
 // cloudinary
 cloudinary.config({
@@ -18,11 +18,13 @@ cloudinary.config({
 
 
 
-
-const server = app.listen(PORT, () => {})
-    // unhandled promise rejection
-process.on("unhandledRejection", err => {
-    server.close(() => {
-        process.exit(1);
+app.listen(PORT, () => {
+        console.log(`server is running on port ${PORT}`);
     })
-})
+    // const server = app.listen(PORT, () => {})
+    //     // unhandled promise rejection
+    // process.on("unhandledRejection", err => {
+    //     server.close(() => {
+    //         process.exit(1);
+    //     })
+    // })
